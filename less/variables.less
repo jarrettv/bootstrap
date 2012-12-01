@@ -10,49 +10,41 @@
 // Grays
 // -------------------------
 @black:                 #000;
-@grayDarker:            #222222; 
-@grayDark:              #3c3c3c; // Aaron's Gray Tone 1
-@gray:                  #7b7b7b; // Aaron's Gray Tone 2
-@grayLight:             #dfdfdf; // Aaron's Gray Tone 3
-@grayLighter:           #efefef; // Aaron's Gray Tone 4
+@grayDarker:            #222;
+@grayDark:              #333;
+@gray:                  #555;
+@grayLight:             #999;
+@grayLighter:           #eee;
 @white:                 #fff;
 
 
 // Accent colors
 // -------------------------
-@blue:                  #9bdce1; // Aaron's Medium Blue
-@blueDark:              #0596af; // Aaron's Dark Blue
-@blueLight:				#dcf0f0; // Aaron's Light Blue
-@green:                 #99cc00; // Aaron's Green
-@greenDark:				#669900; // Aaron's Dark Green
-@red:                   #ff4444; // Aaron's Red
-@redDark:				#c00000; // Aaron's Dark Red
-@yellow:                #fff600; // Aaron's Yellow
-@yellowDark:			#ffff00; // Aaron's Dark Yellow
-@orange:                #ffbb33; // Aaron's Orange
-@orangeDark:			#ff8a00; // Aaron's Dark Orange
+@blue:                  #049cdb;
+@blueDark:              #0064cd;
+@green:                 #46a546;
+@red:                   #9d261d;
+@yellow:                #ffc40d;
+@orange:                #f89406;
 @pink:                  #c3325f;
-@purple:                #aa66cc; // Aaron's Violet
-@purpleDark:			#9933cc; // Aaron's Dark Violet
-@teal:					#5ab49b; // Aaron's Teal
-@tealDark:				#469b82; // Aaron's Dark Teal
+@purple:                #7a43b6;
 
 
 // Scaffolding
 // -------------------------
-@bodyBackground:        @blue;
+@bodyBackground:        @white;
 @textColor:             @grayDark;
 
 
 // Links
 // -------------------------
-@linkColor:             @blueDark;
+@linkColor:             #08c;
 @linkColorHover:        darken(@linkColor, 15%);
 
 
 // Typography
 // -------------------------
-@sansFontFamily:        "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+@sansFontFamily:        "Helvetica Neue", Helvetica, Arial, sans-serif;
 @serifFontFamily:       Georgia, "Times New Roman", Times, serif;
 @monoFontFamily:        Monaco, Menlo, Consolas, "Courier New", monospace;
 
@@ -65,12 +57,14 @@
 @headingsFontWeight:    bold;    // instead of browser default, bold
 @headingsColor:         inherit; // empty to use BS default, @textColor
 
+
 // Tables
 // -------------------------
-@tableBackground:                   #fff; // overall background-color
+@tableBackground:                   transparent; // overall background-color
 @tableBackgroundAccent:             #f9f9f9; // for striping
 @tableBackgroundHover:              #f5f5f5; // for hover
 @tableBorder:                       #ddd; // table and cell border
+
 
 // Buttons
 // -------------------------
@@ -113,11 +107,12 @@
 @dropdownDividerBottom:         @white;
 
 @dropdownLinkColor:             @grayDark;
-@dropdownLinkColorHover:        @white;
-@dropdownLinkColorActive:       @dropdownLinkColor;
 
-@dropdownLinkBackgroundActive:  @linkColor;
+@dropdownLinkColorHover:        @white;
 @dropdownLinkBackgroundHover:   @dropdownLinkBackgroundActive;
+
+@dropdownLinkColorActive:       @dropdownLinkColor;
+@dropdownLinkBackgroundActive:  @linkColor;
 
 
 
@@ -144,7 +139,7 @@
 
 // Input placeholder text color
 // -------------------------
-@placeholderText:         #bbb;
+@placeholderText:         @grayLight;
 
 
 // Hr border color
@@ -152,14 +147,9 @@
 @hrBorder:                @grayLighter;
 
 
-// Horizontal forms & lists
-// -------------------------
-@horizontalComponentOffset:       180px;
-
-
 // Wells
 // -------------------------
-@wellBackground:                  @grayLighter;
+@wellBackground:                  #f5f5f5;
 
 
 // Navbar
@@ -167,12 +157,12 @@
 @navbarCollapseWidth:             979px;
 
 @navbarHeight:                    40px;
-@navbarBackgroundHighlight:       #fefefe; // change from white to fix for blue issue in IE
 @navbarBackground:                darken(@navbarBackgroundHighlight, 5%);
+@navbarBackgroundHighlight:       #ffffff;
 @navbarBorder:                    darken(@navbarBackground, 12%);
 
-@navbarText:                      #777;
-@navbarLinkColor:                 #777;
+@navbarText:                      @gray;
+@navbarLinkColor:                 @gray;
 @navbarLinkColorHover:            @grayDark;
 @navbarLinkColorActive:           @gray;
 @navbarLinkBackgroundHover:       transparent;
@@ -258,8 +248,8 @@
 // Default 940px grid
 // -------------------------
 @gridColumns:             12;
-@gridColumnWidth:         70px;
-@gridGutterWidth:         10px;
+@gridColumnWidth:         60px;
+@gridGutterWidth:         20px;
 @gridRowWidth:            (@gridColumns * @gridColumnWidth) + (@gridGutterWidth * (@gridColumns - 1));
 
 // 1200px min
