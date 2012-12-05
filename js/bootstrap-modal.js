@@ -30,7 +30,6 @@
     this.options = options
     this.$element = $(element)
       .delegate('[data-dismiss="modal"]', 'click.dismiss.modal', $.proxy(this.hide, this))
-    this.options.remote && this.$element.find('.modal-body').load(this.options.remote)
   }
 
   Modal.prototype = {
@@ -41,6 +40,39 @@
         return this[!this.isShown ? 'show' : 'hide']()
       }
 
+    , load: function () {
+        var that = this
+          , e = $.Event('load')
+
+        // clear out old body
+        var body = this.$element.find('.modal-body').empty()
+
+        this.loading()
+
+        // load new body
+        $.get(this.options.remote, function (result) {
+            body.html(result)
+            that.loaded()
+        })
+    }
+
+    , loading: function () {
+        // disable buttons in footer
+        this.$element.find('.modal-footer button').attr('disabled', 'disabled')
+
+        // setup load to cover modal
+        this.$element.find('.modal-load')
+            .width(this.$element.width())
+            .height(this.$element.height())
+            .show()
+    }
+
+    , loaded: function () {
+        this.$element.find('.modal-load').hide()
+        // enable buttons in footer
+        this.$element.find('.modal-footer button').removeAttr('disabled')
+        this.$element.focus().trigger('loaded')
+    }
     , show: function () {
         var that = this
           , e = $.Event('show')
@@ -48,6 +80,11 @@
         this.$element.trigger(e)
 
         if (this.isShown || e.isDefaultPrevented()) return
+
+        // when remote, load
+        if (this.options.remote) {
+            this.load()
+        }
 
         this.isShown = true
 
@@ -199,6 +236,7 @@
         , data = $this.data('modal')
         , options = $.extend({}, $.fn.modal.defaults, $this.data(), typeof option == 'object' && option)
       if (!data) $this.data('modal', (data = new Modal(this, options)))
+      else $.extend($this.data('modal').options, option)
       if (typeof option == 'string') data[option]()
       else if (options.show) data.show()
     })
@@ -221,6 +259,10 @@
       , href = $this.attr('href')
       , $target = $($this.attr('data-target') || (href && href.replace(/.*(?=#[^\s]+$)/, ''))) //strip for ie7
       , option = $target.data('modal') ? 'toggle' : $.extend({ remote:!/#/.test(href) && href }, $target.data(), $this.data())
+
+    if (option == 'toggle') {
+        $.extend($target.data('modal').options, $this.data())
+    }
 
     e.preventDefault()
 
