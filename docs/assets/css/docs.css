@@ -309,7 +309,7 @@ only screen and (     -o-min-device-pixel-ratio: 2/1) {
   line-height: 1;
 }
 .bs-docs-social-buttons .twitter-follow-button {
-  width: 216px !important;
+  width: 225px !important;
 }
 .bs-docs-social-buttons .twitter-share-button {
   width: 98px !important;
@@ -689,6 +689,21 @@ form.bs-docs-example {
   margin: 20px;
 }
 
+/* Dropdowns */
+.bs-docs-example-submenus {
+  min-height: 180px;
+}
+.bs-docs-example-submenus > .pull-left + .pull-left {
+  margin-left: 20px;
+}
+.bs-docs-example-submenus .dropup > .dropdown-menu,
+.bs-docs-example-submenus .dropdown > .dropdown-menu {
+  display: block;
+  position: static;
+  margin-bottom: 5px;
+  *width: 180px;
+}
+
 
 
 /* Responsive docs
@@ -792,6 +807,14 @@ form.bs-docs-example {
   bottom: 270px;
 }
 
+
+
+/* Gallery
+-------------------------------------------------- */
+
+.bs-docs-gallery .thumbnail {
+  margin-bottom: 30px;
+}
 
 
 
@@ -978,7 +1001,26 @@ form.bs-docs-example {
     word-break: break-all;
   }
 
-  /* Modal example */
+  /* Examples: dropdowns */
+  .bs-docs-example-submenus > .pull-left {
+    float: none;
+    clear: both;
+  }
+  .bs-docs-example-submenus > .pull-left,
+  .bs-docs-example-submenus > .pull-left + .pull-left {
+    margin-left: 0;
+  }
+  .bs-docs-example-submenus p {
+    margin-bottom: 0;
+  }
+  .bs-docs-example-submenus .dropup > .dropdown-menu,
+  .bs-docs-example-submenus .dropdown > .dropdown-menu {
+    margin-bottom: 10px;
+    float: none;
+    max-width: 180px;
+  }
+
+  /* Examples: modal */
   .modal-example .modal {
     position: relative;
     top: auto;
